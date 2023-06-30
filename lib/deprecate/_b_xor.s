@@ -11,4 +11,12 @@ b_xor
     tax
     lda ta
     jmp push 
+	
+b_xor
+    PULU	D			; take TOS into D
+	PULU	Y			; take next TOS into Y
+	EORR	Y,D			; exclustive- OR the two
+	PSHU	D			; push the result
+	RTS
+	
 

@@ -1,9 +1,9 @@
 ;**********************************************
 ;  get_ta
-;
-get_ta 
-    jsr pop
-    sta ta
-    stx ta+1
-    rts
+;	
+get_ta
+	LEAX	ta
+    PULU	D
+	STD		0,X
+	RTS
 

@@ -2,8 +2,7 @@
 ;  get_tb
 ;
 get_tb 
-    jsr pop
-    sta tb
-    stx tb+1
-    rts
-
+	LEAX	tb
+	PULU	D
+	STD		0,X
+	RTS

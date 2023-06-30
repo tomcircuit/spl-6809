@@ -1,23 +1,18 @@
 ;*****************************************
 ;  add1  -  add 1 to value in ta
-;
+;	
+; this seems to be a 32b add operation!	
+	
 add1
-    clc
-    ldy #0
-    lda (ta),y
-    adc #1
-    sta (ta),y
-    iny
-    lda (ta),y
-    adc #0
-    sta (ta),y
-    iny
-    lda (ta),y
-    adc #0
-    sta (ta),y
-    iny
-    lda (ta),y
-    adc #0
-    sta (ta),y
-    rts
+	LEAX	ta
+	LDD		0,x
+	ADD		#1
+	STD		0,x
+	LDD		2,x
+	ADC		#0
+	STD		2,x
+	RTS
+	
+	
+	
 

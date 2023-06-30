@@ -2,13 +2,13 @@
 ;  abs  -  absolute value
 ;
 abs
-    jsr get_tb    ;  TOS -> tb
-    lda tb+1    ;  check sign
-    bpl abs_done    ;  already pos
-    jsr comp_tb    ;  2s complement
-abs_done
-    lda tb    
-    ldx tb+1
-    jmp push    ;  push on stack
+	LDD		0,U			; examine TOS
+	TSTD				; check sign of TOS
+	BPL		absx		; already positive, no further action required
+	NEGD				; 2s complement of D
+	STD		0,U
+absx	
+	RTS
+	
 
 

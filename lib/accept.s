@@ -3,28 +3,28 @@
 ;            in the input buffer
 ;            ( addr -- len )
 ;
-;  Apple II specific.
+;  HD6309 SBC ROM 1V4 specific!
 ;
 accept
-    jsr get_ta        ;  output address
-    jsr $fd6f        ;  get a line, $200
-    stx tb            ;  length
-    ldy tb
-    beq accept_done        ;  zero length, exit
-accept_loop
-    dey
-    lda $200,y        ;  get character
-    and #$7f        ;  clear high bit
-    sta (ta),y        ;  store in output string
-    cpy #0
-    beq accept_cont
-    jmp accept_loop
-accept_cont
-    lda #0
-    ldy tb
-    sta (ta),y        ;  ending '\0'
-accept_done
-    lda tb
-    ldx #0
-    jmp push        ;  push actual length
+	LDX		0,U    	; copy the TOS value (address of text buffer) into X
+	PSHS	U		; save the user stack pointer register (needed by ROM function)
+	LEAU	0,X		; put the buffer address into U 
+	JSR		W_GETLNZ	; call MON 1V4 function to get line of text input
+						; on entry: U = address of text buffer
+						; on exit: B = index of last character in buffer
+						;          A = last character in buffer
+						;          V = 0  CR received
+						;          V = 1  CANCEL or >120 characters received
+    BVC     xaccept	; if V is clear, a line of text was entered
+	CLRB			; cancel or too-long a line, so return null-string
+xaccept
+	CLRA			
+	INCB	
+	STA    	B,U
+	EXG		A,B 	; form length of string (incl. terminator) from 0:B --> D
+	PULS	U     	; restore the user stack pointer
+	STD		0,U  	; replace TOS with length of string
+	RTS
+	
+
 

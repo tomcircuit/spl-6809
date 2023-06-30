@@ -18,4 +18,21 @@ btest_done
     lda ta
     and #1
     jsr push
+	
+btest
+	LEAX	ta
+	PULU	D
+	STD		0,X
+	PULU	D	
+	ANDD	0x000F
+	TFR		D,Y		; Y contains index into bit #
+	LDW		0,Y		; load bitmask into W
+	LDD		0,X		; get first operand again
+	ANDR	D,W		; AND operand with mask
+	BEQ		btestx	; if zero, push it
+	LDD		0xFFFF	; one, so load -1
+	
+	
+	
+	
 

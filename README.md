@@ -14,8 +14,7 @@ port is based upon the Carsten Strotmann version, found here:
 https://github.com/cstrotm/spl-6502
 
 I will eventually retarget to the HD6309 CPU because of its more rich
-instruction set and (albiet limited) support for 32b quantities. So 
-probably this will end up being named "spl-6x09" or the like. 
+instruction set and (albiet limited) support for 32b quantities. 
 
 A significant change from Carsten Strotmann version is that I have 
 added the ability to specify some of the primitiives to compile

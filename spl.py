@@ -93,9 +93,7 @@ VARINT = 0x8000
 #  These are stored begining at VARINT and going upwards
 #    take care not to exceed 256 bytes of internal storage
 EQUATES = {
-    "stack"  : VARINT,      #  stack address (grows downward from VARINT)
-    "ta"     : VARINT + 0,  #  Temporary reg A
-    "tb"     : VARINT + 0,  #  TempB
+    "stack"  : VARINT,      #  user stack address (grows downward from VARINT)
     "op1"    : VARINT + 0,  #  1st operand (4 bytes)
     "op2"    : VARINT + 4,  #  2nd operand (4 bytes)
     "res"    : VARINT + 8,  #  result (8 bytes)

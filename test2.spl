@@ -1,10 +1,49 @@
-( test 2 )
-var i 2
+/* test 2 */
+/* This is a block comment
+   that spans two * / lines */
+var i 0x2
+var d00 32
+var word w'
+var double d'
+var byte b'
+
+const fishy w'0x5678
+const portAddr b'0x18
+const octalstuff d'0333333
+
+data foo
+	b'0x24 b'56 b'073 -b'16 b'0 ~b'1 ~b'055 b'0b11010101 w'0 ~w'0x1234
+end
+
+str cat 
+	"This is a string"
+	
+str dog
+	'This is another string'
+
+code bar /#
+	LDAA #$10
+	STAA (i)
+	DECA [x]
+label 
+	STAA i
+	RTS
+#/
 
 : main 
-  cls
-  $4321 i !
+# cls /*
+  0x4321 i !
+  fishy i !
+  portAddr
+  octalstuff
+  "nameless string"
+  
+ /#
+	NOP 
+  #/
   i 1+
+  +
   .
   { }
+  
 ;

@@ -1,18 +1,25 @@
 /* test 2 */
 /* This is a block comment
    that spans two * / lines */
+   
+   ( this is another comment)
+   (  this is a comment that spans
+      two lines )
 var i 0x2
 var d00 32
-var word w'
-var double d'
-var byte b'
+var crossword w'
+var doublemint d'
+var snakebyte b'
+var floating f'
+var array_10 10
 
 const fishy w'0x5678
 const portAddr b'0x18
 const octalstuff d'0333333
 
 data foo
-	b'0x24 b'56 b'073 -b'16 b'0 ~b'1 ~b'055 b'0b11010101 w'0 ~w'0x1234
+	b'0x24 b'56 b'073 -b'16 b'0 ~b'1 ~b'055 b'0b11010101
+	w'0 ~w'0x1234 0 b'0 d'0000 ~w'0 -0 1.256  # frog
 end
 
 str cat 
@@ -22,17 +29,19 @@ str dog
 	'This is another string'
 
 code bar /#
-	LDAA #$10
-	STAA (i)
+	LDA #$10
+	STA (i)
 	DECA [x]
 label 
-	STAA i
+	STA i
 	RTS
 #/
 
 : main 
 # cls /*
   0x4321 i !
+  56e-4 
+  dup
   fishy i !
   portAddr
   octalstuff
@@ -42,8 +51,11 @@ label
 	NOP 
   #/
   i 1+
+  drop dup
+  <
+  -
   +
-  .
-  { }
+  
+  { bar }
   
 ;

@@ -1,0 +1,7 @@
+{
+"gt" : ["bob", "doug"],
+"bob" : ["hope", "mackenzie"],
+"doug" : ["mackenzie"],
+"hope" : [],
+"mackenzie" : []
+}	
